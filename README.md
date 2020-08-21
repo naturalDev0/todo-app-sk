@@ -2,7 +2,7 @@
 
 #### Brief
 
-* A simple todo app that allow user to perform simple CRUD operations
+* A simple todo app that allow user to perform simple CRUD operations.
 
 #### Technologies Used
 
