@@ -15,37 +15,38 @@
 
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a class="navbar-brand" href="{{ url_for('index') }}">TODO App</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-            </li>
-          </ul>
-          
-        </div>
-      </nav>
+        <a class="navbar-brand" href="{{ url_for('index') }}">TODO App</a>      
+    </nav>
+
+    <main class="container-fluid">
+        <section class="container">
+            <section class="row">
+                <section class="col">
+                    <div class="input-group mb-5 mt-5">
+                    
+                        <input type="text" class="form-control" placeholder="Insert a task" aria-label="Insert a task" aria-describedby="submit-task-btn">
+                        
+                        <div class="input-group-append">
+                          <button class="btn btn-outline-secondary" type="button" id="submit-task-btn">Submit</button>
+                        </div>
+                        
+                      </div>
+                </section>
+            </section>
+
+            <section class="row">
+                <section class="col">
+                    <div class="card border-dark mb-3" style="max-width: 18rem;">
+                        <div class="card-header">Header</div>
+                        <div class="card-body text-dark">
+                          <h5 class="card-title">Dark card title</h5>
+                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                      </div>
+                </section>
+            </section>
+        </section>
+    </main>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
