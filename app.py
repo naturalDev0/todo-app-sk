@@ -9,20 +9,26 @@ app = Flask(__name__)
 usr = config('MONGO_DB_USER')
 pwd = config('MONGO_DB_PASS')
 db_collection = config('MONGO_COLLECTION')
+db_name = config('MONGO_DB_NAME')
 
-# 
+# MongoDB filepath
 client  = pymongo.MongoClient("mongodb+srv://" + usr + ":" + pwd + "@clusterx.pg3wu.mongodb.net/"+ db_collection +"?retryWrites=true&w=majority")
 
-db = client['todo']
-collection = db['tasks']
-# collection = pymongo.collection.Collection(db, 'tasks')
+# 
+db = client[db_name]
+collection = db[db_collection]
 
-
+# Default route
 @app.route('/')
 def index():
-    cursor = collection.find({})
+    
+    # Retrieve all data from collection
+    cursor = collection.find({})    
+
+    # Render the data in 'index.html' page
     return render_template("index.html", data=cursor)
 
+# Testing purposes
 @app.route('/test')
 def test():
     collection.insert({
