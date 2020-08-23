@@ -24,7 +24,6 @@
         <a class="navbar-brand font-weight-bold" href="{{ url_for('index') }}">TODO App</a>
     </nav>
 
-
     <!-- Main Content area -->
     <main class="container-fluid">
         <section class="container">
@@ -49,25 +48,33 @@
                             New Task
                         </button>
                     </p>                    
+                    <!-- Hidden form within collapsible field -->
                     <div class="collapse" id="collapseExample">
                         <div class="card card-body mb-3 px-5">                            
-                            <form>
+                            <form name="taskForm" onsubmit="return validateForm()" method="POST" novalidate="novalidate">
 
-                                <input id="tTitle"type="text" class="form-control mt-2 mb-4" placeholder="Insert Title..."
-                                        aria-label="Insert Title..." aria-describedby="submit-task-btn" required>                                
+                                <!-- Title input field -->
+                                <div class="form-group mt-2 mb-4">
+                                    <input id="tTitle" name="title" type="text" class="form-control" placeholder="Insert Title..."
+                                        aria-label="Insert Title..." aria-describedby="submit-task-btn" required>
+                                    <div class="errorText" id="titleErr"></div>
+                                </div>                                
                                                             
-                                <textarea id="tTextarea" class="form-control mb-4" placeholder="Insert Descriptions..." aria-label="Insert Descriptions..." rows="5" required></textarea>
+                                <!-- Description textarea field -->
+                                <div class="form-group mb-4">
+                                    <textarea id="tTextarea" name="description" class="form-control" placeholder="Insert Descriptions..." aria-label="Insert Descriptions..." rows="5"></textarea>
+                                    <div class="errorText" id="descErr"></div>
+                                </div>
                                 
+                                <!-- Functional buttons, both Clear and Submit -->
                                 <div class="input-group">
                                     <button id="form-clearBtn" class="btn btn-secondary mr-2">Clear All</button>
-                                    <button id="form-submitBtn " type="submit" class="btn btn-secondary">Submit</button>   
+                                    <button type="submit" class="btn btn-secondary">Submit</button>   
                                 </div>                        
 
                             </form> 
-
                         </div>
                     </div>
-
 
                 </section>
             </section>

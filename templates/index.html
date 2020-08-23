@@ -7,37 +7,63 @@
 
 <div class="card border-dark mb-3">
     <div class="card-header h5">
-        Task #{{ d["task_no"] }}
-        <span class="float-right">
-
-                <svg width="1rem" height="1rem" viewBox="0 0 16 16" class="mr-3 bi bi-pen editContent" 
-                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <span class="align-middle">Task #{{ d["task_no"] }}</span>
+        <div class="btn-group float-right" role="group" aria-label="basic functions">
+            <!-- Button: Edit card content -->
+            <button type="button" class="btn">
+                <svg width="1rem" height="1rem" viewBox="0 0 16 16" id='editTask{{ d["task_no"] }}'
+                    class="bi bi-pen editContent" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd"
                         d="M5.707 13.707a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391L10.086 2.5a2 2 0 0 1 2.828 0l.586.586a2 2 0 0 1 0 2.828l-7.793 7.793zM3 11l7.793-7.793a1 1 0 0 1 1.414 0l.586.586a1 1 0 0 1 0 1.414L5 13l-3 1 1-3z" />
                     <path fill-rule="evenodd"
                         d="M9.854 2.56a.5.5 0 0 0-.708 0L5.854 5.855a.5.5 0 0 1-.708-.708L8.44 1.854a1.5 1.5 0 0 1 2.122 0l.293.292a.5.5 0 0 1-.707.708l-.293-.293z" />
                     <path d="M13.293 1.207a1 1 0 0 1 1.414 0l.03.03a1 1 0 0 1 .03 1.383L13.5 4 12 2.5l1.293-1.293z" />
                 </svg>
+            </button>
 
-                <svg width="1rem" height="1rem" viewBox="0 0 16 16" class="mr-3 bi bi-x deleteContent" fill="currentColor"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z" />
-                    <path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z" />
+            <!-- Button: Delete card content -->
+            <button type="button" class="btn" data-toggle="modal"
+                data-target="#staticBackdrop{{ d['task_no'] }}">
+                <svg width="1rem" height="1rem" viewBox="0 0 16 16" id='deleteTask{{ d["task_no"] }}'
+                    class="bi bi-x deleteContent" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z" />
+                    <path fill-rule="evenodd"
+                        d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z" />
                 </svg>
+            </button>            
+        </div>
 
-        </span>
+        <!-- Modal: Delete card content -->
+        <div class="modal fade" id="staticBackdrop{{ d['task_no'] }}" data-backdrop="static" data-keyboard="false"
+                tabindex="-1" aria-labelledby="staticBackdropLabel{{ d['task_no'] }}" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel{{ d['task_no'] }}">Remove Task
+                                #{{ d["task_no"] }}?</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="h4">{{ d["title"] }}</div>
+                            <p>{{ d["description"] }}</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-danger">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>        
     </div>
+    <!-- Card: Title and Description content -->
     <div class="card-body text-dark">
         <h5 class="card-title">{{ d["title"] }}</h5>
         <p class="card-text">{{ d["description"]}}</p>
-        <!-- <form class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="status-check" {{ "checked" if d['complete'] else '' }} disabled>
-            <label class="form-check-label" for="status-check">
-                Completed
-            </label>
-        </form> -->
     </div>
 </div>
 
 {% endfor %}
-{% endblock %} 
+{% endblock %}

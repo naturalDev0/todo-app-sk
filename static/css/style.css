@@ -5,6 +5,10 @@ svg.editContent:hover path{
 }
 /* Hover effect: Delete task */
 svg.deleteContent:hover path {
-    fill: #dc3545;
-    
+    fill: #dc3545;    
+}
+
+/* For validation messages in form */
+.errorText {
+    color: #dc3545;
 }

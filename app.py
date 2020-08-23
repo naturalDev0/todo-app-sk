@@ -14,7 +14,7 @@ db_name = config('MONGO_DB_NAME')
 # MongoDB filepath
 client  = pymongo.MongoClient("mongodb+srv://" + usr + ":" + pwd + "@clusterx.pg3wu.mongodb.net/"+ db_collection +"?retryWrites=true&w=majority")
 
-# 
+# MongoDB variables
 db = client[db_name]
 collection = db[db_collection]
 
@@ -28,14 +28,32 @@ def index():
     # Render the data in 'index.html' page
     return render_template("index.html", data=cursor)
 
-# Testing purposes
-@app.route('/test')
-def test():
+# Post route
+@app.route('/', methods=["POST"])
+def insert_data():
+    
+    title = request.form.get('title')
+    description = request.form.get('description')
+    task_count = collection.count() + 1
+
+    print(title, description, task_count)
+
     collection.insert({
-        "text" : "hihi",
-        "complete" : False
+        "task_no": task_count,
+        "title": title,
+        "description": description
     })
-    return '<h1>Data has been inserted!</h1>'
+
+    return redirect(url_for('index'))
+
+# # Testing purposes
+# @app.route('/test')
+# def test():
+#     collection.insert({
+#         "text" : "hihi",
+#         "complete" : False
+#     })
+#     return '<h1>Data has been inserted!</h1>'
 
 # @app.route('/verify')
 # def verify():
