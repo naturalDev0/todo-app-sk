@@ -4,7 +4,6 @@
 
 * A simple todo app that allow user to perform simple CRUD operations.
 
-<br>
 
 ### Technologies Used
 
@@ -15,7 +14,6 @@
 1. MongoDB Atlas
 1. Heroku (Hosting)
 
-<br>
 
 #### Packages
 (default) - Comes with Flask package during installation
@@ -37,26 +35,21 @@
 1. **_Flask-PyMongo==2.3.0_**
 1. **_python-decouple==3.3_** - Use to select environment variables from .env
 
-<br>
 
 *(They can be found in requirements.txt)*
 
-<br>
 
 ### Instructions - Setup project and deployment
 
-<br>
 
-### (Project folder)
+#### (Project folder)
 
 1. Create a project folder
     ```
     C:\Users\to\Path> mkdir <project-name>
     ```
 
-<br>
-
-### (Git and Github)
+#### (Git and Github)
 
 1. Create a new repository for your project on your local computer, within the project folder
     ```
@@ -78,8 +71,6 @@
     ```
     > git clone <remote-link>     // Clone the selected repo offline
     ```
-
-<br>
 
 ### (Flask)
 1. Install Flask using pip package manager
@@ -123,7 +114,7 @@
     ```
 
 
-### (Heroku)
+#### (Heroku)
 1. Install Heroku CLI refer to the [website](https://devcenter.heroku.com/articles/heroku-cli) to install package
 
 2. Log into Heroku via CLI
@@ -137,8 +128,6 @@
     ```
 
 
-<br>
-
 
 ## Summary
-_*** This guide is created for Windows platfrom based projects_
+_*** This guide is created for Windows platform based projects_
