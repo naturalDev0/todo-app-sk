@@ -13,7 +13,6 @@ function clrUserInputs(e) {
     
     task_title.value = "";
     task_desc.value = "";
-    
     error_title.innerHTML = "";
     error_desc.innerHTML = "";
 

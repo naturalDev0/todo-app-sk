@@ -49,10 +49,11 @@
                         <div class="modal-body">
                             <div class="h4">{{ d["title"] }}</div>
                             <p>{{ d["description"] }}</p>
+                            <p class="h6">{{ d["timestamp"] }}</p>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-danger">Delete</button>
+                            <a type="button" class="btn btn-danger" href="{{ d['_id'] }}">Delete</a>
                         </div>
                     </div>
                 </div>
@@ -62,6 +63,7 @@
     <div class="card-body text-dark">
         <h5 class="card-title">{{ d["title"] }}</h5>
         <p class="card-text">{{ d["description"]}}</p>
+        <p class="h6">{{ d["timestamp"] }}</p>
     </div>
 </div>
 

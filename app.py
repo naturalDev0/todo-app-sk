@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for
 import os
 from flask_pymongo import pymongo
 from decouple import config
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -23,7 +24,7 @@ collection = db[db_collection]
 def index():
     
     # Retrieve all data from collection
-    cursor = collection.find({})    
+    cursor = collection.find({})
 
     # Render the data in 'index.html' page
     return render_template("index.html", data=cursor)
@@ -32,29 +33,37 @@ def index():
 @app.route('/', methods=["POST"])
 def insert_data():
     
-    title = request.form.get('title')
-    description = request.form.get('description')
-    task_count = collection.count() + 1
+    # Get form data
+    title = request.form.get('title')               # Form Title
+    description = request.form.get('description')   # Form Description
+    task_count = collection.count() + 1             # Current total count of documents within collection
 
-    print(title, description, task_count)
-
+    # Insert data into MongoDB
     collection.insert({
         "task_no": task_count,
         "title": title,
         "description": description
     })
 
+    # Redirect to 'index' route
     return redirect(url_for('index'))
 
-# # Testing purposes
-# @app.route('/test')
-# def test():
-#     collection.insert({
-#         "text" : "hihi",
-#         "complete" : False
-#     })
-#     return '<h1>Data has been inserted!</h1>'
+@app.route("/<id>")
+def delete_data():
 
-# @app.route('/verify')
-# def verify():
-#     return '<h1>' + pwd + '</h1>'
+    return True
+
+# @app.route("/test")
+# def insert_new_field():
+
+#     dtObj = datetime.now()
+#     # collection.updateMany({}, {"$set": {"timestamp": dtObj}},False,True) 
+#     print(dtObj)
+#     print(collection)
+    
+#     cursor = collection.distinct('_id')
+#     for c in cursor:
+#         print(c)
+#         collection.update_one({'_id':c},{'$set': {'timestamp':dtObj }})
+
+#     return "<h1>Data Inserted</h1>"
