@@ -9,26 +9,31 @@
 
     {% if cate == "update" %}
     <div class="alert alert-warning alert-dismissible fade show mb-0 mt-3" role="alert" id="alertBar">
-    <strong>Updated data --> </strong><strong>{{ aStarter }}</strong>, <strong>Title: </strong>{{ aTitle }}<strong>, Description: </strong>{{ aDesc }}
+        <strong>Updated data --> </strong><strong>{{ aStarter }}</strong>, <strong>Title: </strong>{{ aTitle }}<strong>, Description: </strong>{{ aDesc }}
 
     {% elif cate == "delete" %}
     <div class="alert alert-danger alert-dismissible fade show mb-0 mt-3" role="alert" id="alertBar">
-    <strong>Deleled data --> </strong><strong>{{ aStarter }}</strong>, <strong>Title: </strong>{{ aTitle }}<strong>, Description: </strong>{{ aDesc }}
+        <strong>Deleled data --> </strong><strong>{{ aStarter }}</strong>, <strong>Title: </strong>{{ aTitle }}<strong>, Description: </strong>{{ aDesc }}
 
     {% endif %}
+
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
 
 {% elif aTitle and aDesc %}
 
     <div class="alert alert-success alert-dismissible fade show mb-0 mt-3" role="alert" id="alertBar">
     <strong>Inserted new data! Title: </strong>{{ aTitle }}, <strong>Description: </strong>{{ aDesc }}
 
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
 {% endif %}
-
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-</div>
-
 
 {% endblock%}
 
