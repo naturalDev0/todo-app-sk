@@ -17,7 +17,7 @@
 
     {% endif %}
 
-{% else %}
+{% elif aTitle and aDesc %}
 
     <div class="alert alert-success alert-dismissible fade show mb-0 mt-3" role="alert" id="alertBar">
     <strong>Inserted new data! Title: </strong>{{ aTitle }}, <strong>Description: </strong>{{ aDesc }}
