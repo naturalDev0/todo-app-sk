@@ -7,7 +7,9 @@
 
 ### Technologies Used
 
-1. HTML
+1. HTML5
+1. CSS3
+1. JavaScript 
 1. Bootstrap
 1. Python v3.8.3 
 1. Flask v1.1.2
@@ -18,29 +20,38 @@
 #### Packages
 (default) - Comes with Flask package during installation
 
-1. **_bson==0.5.10_**
-1. **_click==7.1.2_**
-1. **_Flask==1.1.2_**
-1. **_itsdangerous==1.1.0_**
-1. **_MarkupSafe==1.1.1_**
-1. **_python-dateutil==2.8.1_**
-1. **_six==1.15.0_**
-1. **_Werkzeug==1.0.1_**
+| Package | Version  | Description |
+|---    |---    |---    |   
+| bson             | 0.5.10 | 
+| click            | 7.1.2 | 
+| Flask            | 1.1.2 | 
+| itsdangerous     | 1.1.0 | 
+| MarkupSafe       | 1.1.1 | 
+| pip              | 20.2.2 | 
+| python-dateutil  | 2.8.1 | 
+| setuptools       | 41.2.0 | 
+| six              | 1.15.0 | 
+| Werkzeug   | 1.0.1 | 
 
-(manual) - Require manual installation
-1. **_dnspython==2.0.0_** - 
-1. **_gunicorn==20.0.4_** - Deployment to Heroku
-1. **_Jinja2==2.11.2_** - Templating language accompany to with Flask usage
-1. **_pymongo==3.11.0_** - Usage of Mongo driver and syntax
-1. **_Flask-PyMongo==2.3.0_**
-1. **_python-decouple==3.3_** - Use to select environment variables from .env
+<br>
 
+_(manual) - Require manual installation_
+
+| Package | Version  | Description |
+|---    |---    |---    |   
+| dnspython        | 2.0.0 | DNS Tookit for Python
+| Flask-PyMongo    | 2.3.0 |
+| gunicorn         | 20.0.4 | Deployment to Heroku 
+| Jinja2           | 2.11.2 | Templating language accompany to with Flask usage
+| pymongo          | 3.11.0 | Usage of Mongo driver and syntax
+| python-decouple  | 3.3 | Use to select environment variables from .env
+| pytz             | 2020.1 | Python Timezone use to display timezone from datetime
+ 
 
 *(They can be found in requirements.txt)*
 
 
 ### Instructions - Setup project and deployment
-
 
 #### (Project folder)
 
