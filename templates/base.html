@@ -26,6 +26,7 @@
 
     <!-- Main Content area -->
     <main class="container-fluid">
+        {% block alertHeader %}{% endblock %}     
         <section class="container">
 
             <!-- Row: Insert Data area -->
@@ -51,7 +52,7 @@
                     <!-- Hidden form within collapsible field -->
                     <div class="collapse" id="collapseExample">
                         <div class="card card-body mb-3 px-5">                            
-                            <form name="taskForm" onsubmit="return validateForm()" method="POST" novalidate="novalidate">
+                            <form name="taskForm" action="{{ url_for('insert_data') }}" onsubmit="return validateForm()" method="POST" novalidate="novalidate">
 
                                 <!-- Title input field -->
                                 <div class="form-group mt-2 mb-4">
@@ -81,9 +82,7 @@
 
             <!-- Row: View Data area -->
             <section class="row">
-                <section class="col">
-                    {% block content %}{% endblock %}
-                </section>
+                {% block content %}{% endblock %}                
             </section>
 
         </section>

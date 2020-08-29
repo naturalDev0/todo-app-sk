@@ -7,6 +7,8 @@ const error_desc = document.querySelector('#descErr');
 
 const clearBtn = document.querySelector('#form-clearBtn');
 
+let alertBar = document.querySelector('#alertBar');
+
 
 // Function: Clear fields under New Task
 function clrUserInputs(e) {
@@ -16,7 +18,6 @@ function clrUserInputs(e) {
     error_title.innerHTML = "";
     error_desc.innerHTML = "";
 
-    console.log("done.");
     e.preventDefault();
 };
 
@@ -57,7 +58,23 @@ function validateForm(e) {
 
 };
 
+function removeFadeOut(el, speed) {
+    
+    var seconds = speed/1000;
+    el.style.transition = "opacity "+seconds+"s ease";
+    el.style.opacity = 0;
+
+    setTimeout(function() {
+        el.parentNode.removeChild(el);
+    }, speed);
+}
+
 // Execute when document is ready
 document.addEventListener('DOMContentLoaded', function(e){
+
+    if (alertBar) {
+        removeFadeOut(alertBar, 7000);            
+    }
+
     clearBtn.addEventListener('click', clrUserInputs);
 });

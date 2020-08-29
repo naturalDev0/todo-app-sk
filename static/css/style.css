@@ -1,10 +1,10 @@
 /* Hover effect: Edit task */
-svg.editContent:hover path{
+.editContent:hover path{
     fill: #007bff;
     
 }
 /* Hover effect: Delete task */
-svg.deleteContent:hover path {
+.deleteContent:hover path {
     fill: #dc3545;    
 }
 

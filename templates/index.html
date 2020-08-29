@@ -1,71 +1,141 @@
 <!-- Homepage -->
 {% extends "base.html" %}
 
+
+<!-- Alert Content section -->
+{% block alertHeader %}
+
+{% if cate and aStarter and aTitle and aDesc %}    
+
+    {% if cate == "update" %}
+    <div class="alert alert-warning alert-dismissible fade show mb-0 mt-3" role="alert" id="alertBar">
+    <strong>Updated data --> </strong><strong>{{ aStarter }}</strong>, <strong>Title: </strong>{{ aTitle }}<strong>, Description: </strong>{{ aDesc }}
+
+    {% elif cate == "delete" %}
+    <div class="alert alert-danger alert-dismissible fade show mb-0 mt-3" role="alert" id="alertBar">
+    <strong>Deleled data --> </strong><strong>{{ aStarter }}</strong>, <strong>Title: </strong>{{ aTitle }}<strong>, Description: </strong>{{ aDesc }}
+
+    {% endif %}
+
+{% else %}
+
+    <div class="alert alert-success alert-dismissible fade show mb-0 mt-3" role="alert" id="alertBar">
+    <strong>Inserted new data! Title: </strong>{{ aTitle }}, <strong>Description: </strong>{{ aDesc }}
+
+{% endif %}
+
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+
+{% endblock%}
+
 <!-- Main Content section -->
 {% block content %}
 {% for d in data %}
 
-<div class="card border-dark mb-3">
-    <div class="card-header h5">
-        <span class="align-middle">Task #{{ d["task_no"] }}</span>
-        <div class="btn-group float-right" role="group" aria-label="basic functions">
-            <!-- Button: Edit card content -->
-            <button type="button" class="btn">
-                <svg width="1rem" height="1rem" viewBox="0 0 16 16" id='editTask{{ d["task_no"] }}'
-                    class="bi bi-pen editContent" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                        d="M5.707 13.707a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391L10.086 2.5a2 2 0 0 1 2.828 0l.586.586a2 2 0 0 1 0 2.828l-7.793 7.793zM3 11l7.793-7.793a1 1 0 0 1 1.414 0l.586.586a1 1 0 0 1 0 1.414L5 13l-3 1 1-3z" />
-                    <path fill-rule="evenodd"
-                        d="M9.854 2.56a.5.5 0 0 0-.708 0L5.854 5.855a.5.5 0 0 1-.708-.708L8.44 1.854a1.5 1.5 0 0 1 2.122 0l.293.292a.5.5 0 0 1-.707.708l-.293-.293z" />
-                    <path d="M13.293 1.207a1 1 0 0 1 1.414 0l.03.03a1 1 0 0 1 .03 1.383L13.5 4 12 2.5l1.293-1.293z" />
-                </svg>
-            </button>
+<section class="col col-lg-4">
+    <div class="card border-dark mb-3">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-5 col-sm-6 col-md-5 col-lg-7 col-xl-8">
+                    <div class="align-middle h5" id="data-title-{{ d['_id'] }}">{{ d["title"] }}</div>
+                </div>
+                <div class="col-2 col-sm-2 col-md-1 col-lg-5 col-xl-2">
+                    <div class="btn-group" role="group" aria-label="basic functions">
 
-            <!-- Button: Delete card content -->
-            <button type="button" class="btn" data-toggle="modal"
-                data-target="#staticBackdrop{{ d['task_no'] }}">
-                <svg width="1rem" height="1rem" viewBox="0 0 16 16" id='deleteTask{{ d["task_no"] }}'
-                    class="bi bi-x deleteContent" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                        d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z" />
-                    <path fill-rule="evenodd"
-                        d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z" />
-                </svg>
-            </button>            
-        </div>
+                        <!-- Button: Edit card content -->
+                        <button type="button" class="btn editContent" id="edit-task-{{ d['_id'] }}" data-toggle="modal" data-target="#staticBackdropScroll-{{ d['_id'] }}">
+                            <svg width="1rem" height="1rem" viewBox="0 0 16 16" class="bi bi-pen" fill="currentColor"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M5.707 13.707a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391L10.086 2.5a2 2 0 0 1 2.828 0l.586.586a2 2 0 0 1 0 2.828l-7.793 7.793zM3 11l7.793-7.793a1 1 0 0 1 1.414 0l.586.586a1 1 0 0 1 0 1.414L5 13l-3 1 1-3z" />
+                                <path fill-rule="evenodd"
+                                    d="M9.854 2.56a.5.5 0 0 0-.708 0L5.854 5.855a.5.5 0 0 1-.708-.708L8.44 1.854a1.5 1.5 0 0 1 2.122 0l.293.292a.5.5 0 0 1-.707.708l-.293-.293z" />
+                                <path
+                                    d="M13.293 1.207a1 1 0 0 1 1.414 0l.03.03a1 1 0 0 1 .03 1.383L13.5 4 12 2.5l1.293-1.293z" />
+                            </svg>
+                        </button>
 
-        <!-- Modal: Delete card content -->
-        <div class="modal fade" id="staticBackdrop{{ d['task_no'] }}" data-backdrop="static" data-keyboard="false"
-                tabindex="-1" aria-labelledby="staticBackdropLabel{{ d['task_no'] }}" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="staticBackdropLabel{{ d['task_no'] }}">Remove Task
-                                #{{ d["task_no"] }}?</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+                        <!-- Button: Delete card content -->
+                        <button type="button" class="btn deleteContent" data-toggle="modal"
+                            data-target="#staticBackdrop-{{ d['_id'] }}">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                <path fill-rule="evenodd"
+                                    d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Modal: Edit card content -->
+                    <div class="modal fade" id="staticBackdropScroll-{{ d['_id'] }}" tabindex="-1" aria-labelledby="staticBackdropScroll-{{ d['_id'] }}" aria-hidden="true">
+
+                        <div class="modal-dialog modal-dialog-scrollable">
+                            <div class="modal-content">
+                                <form method="POST" action="{{ url_for('update_data') }}">
+                                    <div class="modal-header">
+                                        <input type="text" class="modal-title form-control" name="edit-title" value="{{d['title']}}
+" />                                        
+                                    </div>
+                                    <div class="modal-body">
+                                        <textarea class="form-control" name="edit-desc">{{ d['description'] }}</textarea>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <input type="hidden" name="hTaskID" value="{{ d['_id'] }}">
+                                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                                    </div>
+                                </form>                                
+                            </div>
                         </div>
-                        <div class="modal-body">
-                            <div class="h4">{{ d["title"] }}</div>
-                            <p>{{ d["description"] }}</p>
-                            <p class="h6">{{ d["timestamp"] }}</p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <a type="button" class="btn btn-danger" href="{{ d['_id'] }}">Delete</a>
+
+                    </div>
+
+                    <!-- Modal: Delete card content -->
+                    <div class="modal fade" id="staticBackdrop-{{ d['_id'] }}" data-backdrop="static"
+                        data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel-{{ d['_id'] }}"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <form method="POST" action="{{ url_for('delete_data') }}">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" name="delete-title" id="staticBackdropLabel-{{ d['_id'] }}">Remove Task:
+                                            {{ d["title"] }}?</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        <input type="hidden" name="delete-title" value="{{ d['title'] }}" />
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>{{ d["description"] }}</p>
+                                        <input type="hidden" name="delete-desc" value="{{ d['description'] }}" />
+                                        <p>{{ d["timestamp"] }}</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>                                        
+                                            <input type="hidden" name="hTaskID" value="{{ d['_id'] }}">
+                                            <input type="submit" class="btn btn-danger" name="submit" value="Delete" />                                         
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>        
+            </div>
+        </div>
+        <!-- Card: Title and Description content -->
+        <div class="card-body text-dark">
+            <!-- <h5 class="card-title">{{ d["title"] }}</h5> -->
+            <p class="card-text" id="data-desc">{{ d["description"]}}</p>
+            <p class="card-text">{{ d["timestamp"] }}</p>
+        </div>
     </div>
-    <!-- Card: Title and Description content -->
-    <div class="card-body text-dark">
-        <h5 class="card-title">{{ d["title"] }}</h5>
-        <p class="card-text">{{ d["description"]}}</p>
-        <p class="h6">{{ d["timestamp"] }}</p>
-    </div>
-</div>
+</section>
+
 
 {% endfor %}
 {% endblock %}
